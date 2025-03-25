@@ -1,6 +1,5 @@
 module github.com/ShopOnGO/admin-proto
 
-
 go 1.23.3
 
 require (
