@@ -1,4 +1,4 @@
-module admin_proto
+module github.com/admin_proto
 
 go 1.23.3
 
