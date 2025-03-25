@@ -1,4 +1,4 @@
-module github.com/ShopOnGO/admin_proto
+module github.com/ShopOnGO/admin-proto
 
 
 go 1.23.3
