@@ -46,7 +46,11 @@ message Category {
     string name = 2;
     string description = 3;
     string image_url = 4;
+    uint32 parent_category_id = 5; // ID родительской категории (может быть NULL)
+    Category parent_category = 6; // Родительская категория
+    repeated Category sub_categories = 7; // Подкатегории
 }
+
 message Product {
     Model model = 1;
     string name = 2;
