@@ -51,20 +51,15 @@ message Product {
     Model model = 1;
     string name = 2;
     string description = 3;
-    uint32 category_id = 4;
-    uint32 brand_id = 5;
-    float discount = 6;
-    int32 stock = 7;
-    bool is_available = 8;
-    string size = 9;
-    string color = 10;
-    string material = 11;
-    ProductGender gender = 12;
-    ProductSeason season = 13;
-    string video_url = 14;
-    string gallery = 15;
-    float rating = 16;
-    int32 reviews_count = 17;
+    int64 price = 4;
+    int64 discount = 5;
+    bool is_active = 6;
+    uint32 category_id = 7;
+    Category category = 8;
+    uint32 brand_id = 9;
+    Brand brand = 10;
+    string images = 11;
+    string video_url = 12;
 }
 message User {
     Model model = 1;
