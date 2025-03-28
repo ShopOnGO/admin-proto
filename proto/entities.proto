@@ -84,6 +84,25 @@ message Link {
     string hash = 3;
 }
 
+message ProductVariant {
+    Model model = 1;
+    uint32 product_id = 2;
+    string sku = 3;
+    uint32 price = 4;
+    uint32 discount = 5;
+    uint32 reserved = 6;
+    uint32 rating = 7;
+    repeated uint32 sizes = 8;
+    repeated string colors = 9;
+    uint32 stock =10;
+    string material = 11;
+    string barcode = 12;
+    bool is_active = 13;
+    repeated string images = 14;
+    uint32 min_order = 15;
+    string dimensions = 16;
+}
+
 message ID {
     uint64 id = 1;
   }
