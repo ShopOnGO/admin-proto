@@ -35,7 +35,7 @@ type BrandServiceClient interface {
 	GetFeaturedBrands(ctx context.Context, in *GetFeaturedBrandsRequest, opts ...grpc.CallOption) (*BrandListResponse, error)
 	FindBrandByName(ctx context.Context, in *FindBrandByNameRequest, opts ...grpc.CallOption) (*BrandResponse, error)
 	FindBrandByID(ctx context.Context, in *FindBrandByIDRequest, opts ...grpc.CallOption) (*BrandResponse, error)
-	UpdateBrand(ctx context.Context, in *Brand, opts ...grpc.CallOption) (*BrandResponse, error)
+	UpdateBrand(ctx context.Context, in *UpdateBrandRequest, opts ...grpc.CallOption) (*BrandResponse, error)
 	DeleteBrand(ctx context.Context, in *DeleteBrandRequest, opts ...grpc.CallOption) (*DeleteBrandResponse, error)
 }
 
@@ -87,7 +87,7 @@ func (c *brandServiceClient) FindBrandByID(ctx context.Context, in *FindBrandByI
 	return out, nil
 }
 
-func (c *brandServiceClient) UpdateBrand(ctx context.Context, in *Brand, opts ...grpc.CallOption) (*BrandResponse, error) {
+func (c *brandServiceClient) UpdateBrand(ctx context.Context, in *UpdateBrandRequest, opts ...grpc.CallOption) (*BrandResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BrandResponse)
 	err := c.cc.Invoke(ctx, BrandService_UpdateBrand_FullMethodName, in, out, cOpts...)
@@ -115,7 +115,7 @@ type BrandServiceServer interface {
 	GetFeaturedBrands(context.Context, *GetFeaturedBrandsRequest) (*BrandListResponse, error)
 	FindBrandByName(context.Context, *FindBrandByNameRequest) (*BrandResponse, error)
 	FindBrandByID(context.Context, *FindBrandByIDRequest) (*BrandResponse, error)
-	UpdateBrand(context.Context, *Brand) (*BrandResponse, error)
+	UpdateBrand(context.Context, *UpdateBrandRequest) (*BrandResponse, error)
 	DeleteBrand(context.Context, *DeleteBrandRequest) (*DeleteBrandResponse, error)
 	mustEmbedUnimplementedBrandServiceServer()
 }
@@ -139,7 +139,7 @@ func (UnimplementedBrandServiceServer) FindBrandByName(context.Context, *FindBra
 func (UnimplementedBrandServiceServer) FindBrandByID(context.Context, *FindBrandByIDRequest) (*BrandResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindBrandByID not implemented")
 }
-func (UnimplementedBrandServiceServer) UpdateBrand(context.Context, *Brand) (*BrandResponse, error) {
+func (UnimplementedBrandServiceServer) UpdateBrand(context.Context, *UpdateBrandRequest) (*BrandResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateBrand not implemented")
 }
 func (UnimplementedBrandServiceServer) DeleteBrand(context.Context, *DeleteBrandRequest) (*DeleteBrandResponse, error) {
@@ -239,7 +239,7 @@ func _BrandService_FindBrandByID_Handler(srv interface{}, ctx context.Context, d
 }
 
 func _BrandService_UpdateBrand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Brand)
+	in := new(UpdateBrandRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -251,7 +251,7 @@ func _BrandService_UpdateBrand_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: BrandService_UpdateBrand_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BrandServiceServer).UpdateBrand(ctx, req.(*Brand))
+		return srv.(BrandServiceServer).UpdateBrand(ctx, req.(*UpdateBrandRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

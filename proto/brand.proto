@@ -10,7 +10,7 @@ service BrandService {
     rpc GetFeaturedBrands (GetFeaturedBrandsRequest) returns (BrandListResponse);
     rpc FindBrandByName (FindBrandByNameRequest) returns (BrandResponse);
     rpc FindBrandByID(FindBrandByIDRequest) returns (BrandResponse);
-    rpc UpdateBrand (Brand) returns (BrandResponse);
+    rpc UpdateBrand (UpdateBrandRequest) returns (BrandResponse);
     rpc DeleteBrand (DeleteBrandRequest) returns (DeleteBrandResponse);
 }
 
@@ -31,6 +31,14 @@ message FindBrandByNameRequest {
 }
 message FindBrandByIDRequest {
     uint64 id = 1;
+}
+message UpdateBrandRequest{
+   uint64 id = 1;
+   string name = 2;
+    string description = 3;
+    string video_url = 4;
+    string logo = 5;
+
 }
 
 
